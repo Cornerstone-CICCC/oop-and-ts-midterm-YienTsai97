@@ -2,7 +2,6 @@ export class CartContext {
     constructor() {
         this.cart = []
         this.listeners = []
-        this.products = []
         this.filterProducts = []
         this.selectedCategory = ""
     }
@@ -99,14 +98,5 @@ export class CartContext {
         this.updateSubTotal()
         console.log(`Total Item:${this.updateQuantity}`)
         this.listeners.forEach(listener => listener(this.cart))
-    }
-
-
-    selectCategory(inputcategory) {
-        if (inputcategory === "viewAll" || inputcategory == null || inputcategory == undefined) {
-            this.filterProducts = this.products
-        } else {
-            this.filterProducts = this.products.filter(product => product.category === inputcategory)
-        }
     }
 }

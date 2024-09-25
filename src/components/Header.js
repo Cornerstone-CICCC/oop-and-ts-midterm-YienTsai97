@@ -6,8 +6,12 @@ export class Header extends Component {
   }
 
   handleSelectCategory(inputcategory) {
-    this.props.cartContext.selectedCategory = inputcategory
-    this.props.reload
+    this.props.cartContext.selectedCategory = inputcategory;
+    
+    // Call the reload method from props to trigger rerun of ProductList
+    if (this.props.reload) {
+      this.props.reload();  // This will rerun the ProductList mount
+    }
   }
 
 
@@ -28,7 +32,7 @@ export class Header extends Component {
         <button>chart</button>
     </div>
     <nav class="header-nav">
-      <li id="viewAll"><a href="#">View All</a></li>
+      <li id=""><a href="#">View All</a></li>
       <li id="electronics"><a href="#">Electronics</a></li>
       <li id="jewelery"><a href="#">Jewelery</a></li>
       <li id="men's clothing"><a href="#">Men's Clothing</a></li>

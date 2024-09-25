@@ -6,6 +6,17 @@ import { CartList } from "./CartList.js";
 
 
 export class App extends Component {
+  constructor(props) {
+    super(props);
+    this.productList = new ProductList({ cartContext: this.props.cartContext });
+  }
+
+  reloadProductList() {
+    const main = document.querySelector('main');
+    main.querySelector('.all-products').innerHTML = ''; 
+    this.productList.mount(main);
+  }
+
   render() {
     const container = document.createElement('div')
     container.classList = "container"
@@ -22,14 +33,16 @@ export class App extends Component {
       <div class="footer-wrapper"></div>
   `
 
-    const header = new Header({ cartContext: this.props.cartContext, }).render()
+    const header = new Header({ 
+      cartContext: this.props.cartContext,
+      reload: this.reloadProductList.bind(this)
+    }).render();
     const footer = new Footer({ copyrightText: 'A-0524 All Rights Reserved.' }).render()
-    const productList = new ProductList({ cartContext: this.props.cartContext, })
     const cartList = new CartList({ cartContext: this.props.cartContext }).render()
 
 
     container.querySelector('.header-wrapper').appendChild(header)
-    productList.mount(container.querySelector('main'))
+    this.productList.mount(container.querySelector('main'));
     container.querySelector('.cart').appendChild(cartList)
     container.querySelector('.footer-wrapper').append(footer)
 
