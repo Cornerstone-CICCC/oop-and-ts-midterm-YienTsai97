@@ -13,12 +13,21 @@ export class ProductList extends Component {
     fetch(`https://fakestoreapi.com/products`)
       .then(response => response.json())
       .then(data => {
-        this.props.cartContext.products = data
-        this.state.products = this.props.cartContext.products
-        // if (this.props.cartContext.selectedCategory) {
-        //   this.props.cartContext.selectCategory()
-        // }
-        container.appendChild(this.render())
+        this.state.products = data
+        if (this.props.cartContext.selectedCategory) {
+          this.state.products = this.state.products.filter(
+            product => product.category === this.props.cartContext.selectedCategory
+          );
+        }
+
+        const newProductList = this.render();
+        const oldProductList = container.querySelector('.product-list');
+
+        if (oldProductList) {
+          container.replaceChild(newProductList, oldProductList);
+        } else {
+          container.appendChild(newProductList);
+        }
       })
       .catch(error => console.error(`Error retrieving data:`, error))
   }
