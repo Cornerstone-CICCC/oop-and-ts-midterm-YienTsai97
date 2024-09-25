@@ -1,1 +1,52 @@
 /* YOUR CSS HERE */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+}
+
+header {
+    background-color: gray;
+}
+
+footer {
+    background-color: gray;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100vw;
+    gap: 20px;
+}
+
+.product-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: auto;
+}
+
+.product-item {
+    width: 150px;
+    height: auto;
+    background-color: beige;
+}
+
+.cart {
+    display: flex;
+    width: 40%;
+    background-color: azure;
+}
+
+img {
+    object-fit: fill;
+}
+
+button {
+    cursor: pointer;
+}
