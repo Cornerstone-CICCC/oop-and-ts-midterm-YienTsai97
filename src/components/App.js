@@ -11,7 +11,7 @@ export class App extends Component {
     container.classList = "container"
     container.innerHTML =
       `
-      <div class="header-wrapper"></div>
+      <div class="header-wrapper navbar bg-body-tertiary"></div>
       <div class="content">
         <main>
         <div class="best-seller"><h2>Best Seller</h2><div>

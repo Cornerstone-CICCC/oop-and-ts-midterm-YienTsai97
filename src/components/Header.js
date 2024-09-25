@@ -14,9 +14,14 @@ export class Header extends Component {
   render() {
     const header = document.createElement('header')
     header.innerHTML = `
+
+
     <div class="header-top">
-      <div class="header-left">
-        <span>Shoppy!</span>
+      <div class="header-left container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="../asset/brand_icon.png." alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+          eZShop!
+        </a>
       </div>
       <div class="header-mid">
         <label for="">
