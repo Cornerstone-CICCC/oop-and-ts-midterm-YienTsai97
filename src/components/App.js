@@ -13,7 +13,7 @@ export class App extends Component {
 
   reloadProductList() {
     const main = document.querySelector('main');
-    main.querySelector('.all-products').innerHTML = ''; 
+    main.querySelector('.all-products').innerHTML = '';
     this.productList.mount(main);
   }
 
@@ -22,18 +22,17 @@ export class App extends Component {
     container.classList = "container"
     container.innerHTML =
       `
-      <div class="header-wrapper navbar bg-body-tertiary"></div>
-      <div class="content">
-        <main>
-        <div class="best-seller"><h2>Best Seller</h2><div>
+      <div class="header-wrapper fixed-top bg-primary"></div>
+      <div class="content d-flex flex-row">
+        <main class="">
         <div class="all-products"><h2>All Products</h2><div>
         </main>
-        <div class = "cart"></div>
+        <div class ="cart"><h3>My Cart</h3></div>
       </div>
       <div class="footer-wrapper"></div>
   `
 
-    const header = new Header({ 
+    const header = new Header({
       cartContext: this.props.cartContext,
       reload: this.reloadProductList.bind(this)
     }).render();
@@ -42,7 +41,7 @@ export class App extends Component {
 
 
     container.querySelector('.header-wrapper').appendChild(header)
-    this.productList.mount(container.querySelector('main'));
+    this.productList.mount(container.querySelector('.all-products'));
     container.querySelector('.cart').appendChild(cartList)
     container.querySelector('.footer-wrapper').append(footer)
 

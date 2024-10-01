@@ -8,7 +8,6 @@ export class CartContext {
 
     addProduct(product) {
         if (this.checkIterate(product)) {
-            console.log(`Product already in the cart: ${product.id}`)
             this.addQuantity(product.id)
             this.multiply(product.id)
             this.updateQuantity()
@@ -18,7 +17,6 @@ export class CartContext {
         this.cart.find(item => item.id === product.id).quantity = 1
         this.cart.find(item => item.id === product.id).multiply = 1
         this.multiply(product.id)
-        console.log(`addProduct activated /id:${product.id}`)
         this.notifyListeners()
     }
 
@@ -38,7 +36,6 @@ export class CartContext {
         product.quantity++
         this.multiply(id)
         this.notifyListeners()
-        console.log(`ADD${product.quantity}`)
     }
 
     substractQuantity(id) {
@@ -48,7 +45,6 @@ export class CartContext {
             product.quantity--
             this.multiply(id)
             this.notifyListeners()
-            console.log(`SUB${product.quantity}`)
             return
         }
         product.quantity = 0
@@ -61,7 +57,6 @@ export class CartContext {
         this.cart.forEach(item => {
             total += item.quantity
         })
-        console.log(`sumup items:${total}`)
         return total
     }
     // Can also do it at frontend, using reduce method  (because we only pull data from the array)
@@ -70,15 +65,15 @@ export class CartContext {
         const productId = id
         const product = this.cart.find(item => item.id === productId)
         product.multiply = product.quantity * product.price
-        console.log(`product-multiply: ${product.multiply}`)
+        //product.multiply = product.multiply.toFixed(2)
     }
 
     updateSubTotal() {
-        let total = 0;
+        let total = 0
         this.cart.forEach(item => {
             total += item.multiply
         })
-        console.log(`subtotal:${total}`)
+        total = total.toFixed(2)
         return total
     }
     // Can also do it at frontend, using reduce method (beccause we only pull data from the array)
@@ -96,7 +91,6 @@ export class CartContext {
     notifyListeners() {
         this.updateQuantity()
         this.updateSubTotal()
-        console.log(`Total Item:${this.updateQuantity}`)
         this.listeners.forEach(listener => listener(this.cart))
     }
 }
