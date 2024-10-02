@@ -29,10 +29,10 @@ export class Header extends Component {
         </a>
       </div>
       <div class="header-mid">
-          <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-white" type="submit">Search</button>
-          </form>
+          <div class="d-flex" >
+          <input id="search-input1" class="input1 form-control me-2" type="text" placeholder="Search" >
+          <button class="submit btn btn-outline-white">Search</button>
+          </div>
       </div>
       <div class="header-right d-flex">
         <button class='cart-open'><img src="../asset/shoppingCart_icon.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top"></button>
@@ -48,10 +48,10 @@ export class Header extends Component {
                 <li id="women's clothing"><a href="#">Women's Clothing</a></li>
           </ul>
           <div class="searchRow2" >
-            <form class=" d-flex mt-3" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-white" type="submit">Search</button>
-            </form>
+          <div class="d-flex mt-3" >
+          <input id="search-input2" class="input2 form-control me-2" type="text" placeholder="Search" >
+          <button class="submit btn btn-outline-white">Search</button>
+          </div>
           </div>
     <nav>
 
@@ -75,7 +75,7 @@ export class Header extends Component {
 
 
     document.addEventListener('DOMContentLoaded', function () {
-      const headerNav = document.querySelector('.header-bottom')
+      //const headerNav = document.querySelector('.header-bottom')
       const headerRight = document.querySelector('.header-right')
 
       if (window.innerWidth > 768) {
@@ -84,7 +84,6 @@ export class Header extends Component {
       }
     }
     )
-
 
     return header
   }

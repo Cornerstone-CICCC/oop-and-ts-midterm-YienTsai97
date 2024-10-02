@@ -11926,7 +11926,7 @@ body .container header .header-right button {
 body .container header .header-mid {
   display: none;
 }
-body .container header input[type=search] {
+body .container header input[type=text] {
   border-radius: 5px;
   background-color: white;
   color: black;

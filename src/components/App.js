@@ -14,7 +14,7 @@ export class App extends Component {
   reloadProductList() {
     const main = document.querySelector('main');
     main.querySelector('.all-products').innerHTML = '';
-    this.productList.mount(main);
+    this.productList.mount(main.querySelector('.all-products'));
   }
 
   render() {
@@ -24,8 +24,9 @@ export class App extends Component {
       `
       <div class="header-wrapper fixed-top bg-primary"></div>
       <div class="content d-flex flex-row">
-        <main class="">
-        <div class="all-products"><h2>All Products</h2><div>
+        <main>
+        <h2>All Products</h2>
+        <div class="all-products"><div>
         </main>
         <div class ="cart"><h3>My Cart</h3></div>
       </div>
